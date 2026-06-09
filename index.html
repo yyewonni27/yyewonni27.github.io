@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>염예원 | 따뜻한 정보보안 전문가 포트폴리오</title>
+    
+    <!-- Pretendard Font (한글 타이포그래피 최고봉) -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        window.tailwind = window.tailwind || {};
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Pretendard', 'sans-serif'],
+                    },
+                    colors: {
+                        cyber: {
+                            50: '#f0fdfa',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            900: '#134e4a',
+                            950: '#042f2e',
+                        },
+                        warm: {
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                        },
+                        surface: '#0f172a',
+                        surface_hover: '#1e293b'
+                    },
+                    animation: {
+                        'blob': 'blob 12s infinite',
+                        'scan-line': 'scan 4s linear infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%, 100%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.08)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.95)' },
+                        },
+                        scan: {
+                            '0%': { top: '0%' },
+                            '50%': { top: '100%' },
+                            '100%': { top: '0%' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            background-color: #020617; /* 더 깊고 고급스러운 다크 블루 블랙 */
+            color: #f8fafc;
+        }
+        
+        /* 초정밀 그리드 패턴 */
+        .bg-grid-premium {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+            mask-image: radial-gradient(circle at 50% 50%, black 70%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle at 50% 50%, black 70%, transparent 100%);
+        }
+
+        /* 럭셔리 소프트 글로우 */
+        .premium-glow {
+            text-shadow: 0 0 30px rgba(45, 212, 191, 0.3), 0 0 10px rgba(99, 102, 241, 0.2);
+        }
+
+        /* 글래스모피즘 프리미엄 패널 */
+        .luxury-panel {
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .luxury-panel:hover {
+            border-color: rgba(45, 212, 191, 0.2);
+            background: rgba(15, 23, 42, 0.6);
+            transform: translateY(-3px);
+        }
+
+        /* 스크롤바 커스텀 */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 99px; }
+        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-cyber-500 selection:text-white relative overflow-x-hidden">
+
+    <!-- 고풍스러운 라이트 이펙트 배경 -->
+    <div class="fixed inset-0 z-[-1] bg-grid-premium"></div>
+    <div class="fixed top-[-10%] left-[5%] w-[600px] h-[600px] bg-cyber-500/8 rounded-full filter blur-[130px] animate-blob z-[-1]"></div>
+    <div class="fixed bottom-[15%] right-[5%] w-[700px] h-[700px] bg-warm-500/8 rounded-full filter blur-[160px] animate-blob z-[-1]" style="animation-delay: 4s;"></div>
+
+    <!-- Floating Navigation Bar -->
+    <nav class="fixed w-full z-50 top-5 transition-all duration-300 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="luxury-panel flex items-center justify-between h-14 px-6 rounded-full bg-slate-950/50 backdrop-blur-md">
+                <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <div class="w-7 h-7 rounded-full bg-gradient-to-tr from-cyber-500 to-warm-500 flex items-center justify-center shadow-lg shadow-cyber-500/10">
+                        <i data-lucide="shield-check" class="text-slate-950 w-4 h-4"></i>
+                    </div>
+                    <span class="font-bold text-sm tracking-widest text-white">SECUARITY.SEC</span>
+                </div>
+                <!-- Desktop Menus -->
+                <div class="hidden sm:flex items-center space-x-8">
+                    <a href="#about" class="text-xs font-medium text-slate-400 hover:text-white transition-colors">소개</a>
+                    <a href="#simulator" class="text-xs font-medium text-slate-400 hover:text-white transition-colors">체험관</a>
+                    <a href="#projects" class="text-xs font-medium text-slate-400 hover:text-white transition-colors">스터디 & 활동</a>
+                    <a href="#contact" class="text-xs font-medium text-slate-400 hover:text-white transition-colors">연락하기</a>
+                </div>
+                <!-- Responsive Contact Button -->
+                <a href="#contact" class="px-4 py-1.5 rounded-full bg-gradient-to-r from-cyber-500/10 to-warm-500/10 border border-cyber-400/20 hover:border-cyber-400/40 text-[11px] font-semibold text-cyber-400 transition-all">
+                    보안 상담소
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (과제 이미지의 환영 멘트를 압도적인 감성으로 전면 수정) -->
+    <header class="relative pt-32 pb-20 lg:pt-44 lg:pb-28 min-h-screen flex flex-col items-center justify-center text-center px-6">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cyber-400/15 bg-cyber-500/5 text-cyber-400 text-[11px] font-bold tracking-wider mb-8 animate-pulse-slow">
+            <span class="w-2 h-2 rounded-full bg-cyber-400"></span>
+            HUMAN-CENTERED CYBER SECURITY
+        </div>
+        
+        <!-- Main Title -->
+        <h1 style="line-height: 1.2 !important;" class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white mb-6 max-w-4xl break-keep">
+        차가운 방화벽 너머,<br />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-400 via-teal-300 to-warm-400 premium-glow font-black">
+                사람들의 따뜻한 일상</span>을<br>조용히 수호합니다.
+        </h1>
+        
+        <!-- Intro Paragraph -->
+        <p class="mt-4 text-sm sm:text-base md:text-lg text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
+            개인정보가 손쉽게 스며나가는 세상 속에서, 사람들의 웃음과 행복이 담긴 소중한 데이터만큼은 단단하게 지키고 싶습니다. 
+            기술의 화려함 이전에 <strong>'인간에 대한 존중'</strong>을 먼저 생각하는, 컴퓨터소프트웨어공학과 예비 정보보안 전문가 <strong>염예원</strong>입니다.
+        </p>
+        
+        <!-- CTAs -->
+        <div class="mt-12 flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto">
+            <a href="#about" class="px-7 py-3 rounded-full bg-white text-slate-950 text-sm font-bold hover:bg-slate-100 transition-all flex items-center justify-center gap-2 group shadow-lg shadow-white/5">
+                포트폴리오 자세히 보기
+                <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+            <a href="#simulator" class="px-7 py-3 rounded-full luxury-panel text-slate-300 text-sm font-semibold flex items-center justify-center gap-2">
+                <span class="flex h-2 w-2 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyber-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-cyber-500"></span>
+                </span>
+                보안 안전지수 체험하기
+            </a>
+        </div>
+
+        <div class="absolute bottom-10 animate-bounce text-slate-500 cursor-pointer" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
+            <i data-lucide="chevron-down" class="w-6 h-6"></i>
+        </div>
+    </header>
+
+    <!-- About Me Section (과제 이미지_4edd44.png의 인포그래픽 구조를 대폭 강화 및 고도화) -->
+    <section id="about" class="py-24 relative z-10 border-t border-slate-900/40">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-xs uppercase tracking-[0.2em] text-cyber-400 font-bold mb-3">About Me</h2>
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-white">어제보다 오늘 더 성장하는 보안학도</h3>
+                <div class="w-12 h-1 bg-gradient-to-r from-cyber-500 to-warm-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <!-- Left Column: Premium Interactive Art Graphic (Replaces standard boring icon) -->
+                <div class="md:col-span-5 flex justify-center">
+                    <div class="relative w-64 h-64 flex items-center justify-center">
+                        <!-- Outer Glow Track -->
+                        <div class="absolute inset-0 rounded-full border border-dashed border-cyber-500/20 animate-spin" style="animation-duration: 20s;"></div>
+                        <div class="absolute inset-3 rounded-full border border-warm-500/20 animate-spin" style="animation-duration: 12s; animation-direction: reverse;"></div>
+                        
+                        <!-- Core Avatar Graphic -->
+                        <div class="w-48 h-48 rounded-full bg-slate-900/80 border border-slate-800 flex flex-col items-center justify-center p-6 text-center shadow-inner relative overflow-hidden group">
+                            <!-- Scanner Line Overlay -->
+                            <div class="absolute inset-x-0 w-full h-[2px] bg-cyber-400/20 pointer-events-none animate-scan-line"></div>
+                            
+                            <!-- Dynamic Icon -->
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-cyber-500/20 to-warm-500/20 border border-cyber-500/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                                <i data-lucide="shield-alert" class="w-8 h-8 text-cyber-400"></i>
+                            </div>
+                            <span class="text-[11px] font-mono tracking-widest text-slate-500 uppercase">Secure Core</span>
+                            <span class="text-xs font-bold text-white mt-1">염예원</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Rich Info Cards (Upgraded structure from image_4edd44.png) -->
+                <div class="md:col-span-7 space-y-6">
+                    <div class="space-y-4">
+                        <h4 class="text-xl font-bold text-white leading-snug">
+                            "기술은 날카로워야 하지만,<br />기술의 방향성은 한없이 따뜻해야 합니다."
+                        </h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            대학 입학 후 마주한 수많은 보안 위협 뉴스들은 저에게 깊은 자극이 되었습니다. 기술의 발전 뒤에 방치되어 피해를 입는 디지털 취약계층의 개인정보 유출을 보며, 단순한 코더가 아닌 <strong>인간 중심의 튼튼한 방어 시스템을 구축하는 아키텍트</strong>가 되겠다고 결심했습니다.
+                        </p>
+                    </div>
+
+                    <!-- Details Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-900">
+                        <div class="flex items-start gap-3">
+                            <div class="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 text-cyber-400">
+                                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Location</p>
+                                <p class="text-xs sm:text-sm text-slate-200 font-semibold mt-0.5">대한민국, 서울</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 text-warm-400">
+                                <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Education</p>
+                                <p class="text-xs sm:text-sm text-slate-200 font-semibold mt-0.5">컴퓨터소프트웨어공학과</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 text-cyan-400">
+                                <i data-lucide="code-2" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Core Interest</p>
+                                <p class="text-xs sm:text-sm text-slate-200 font-semibold mt-0.5">시큐어 코딩 / 암호학</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 text-emerald-400">
+                                <i data-lucide="heart-handshake" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Philosophy</p>
+                                <p class="text-xs sm:text-sm text-slate-200 font-semibold mt-0.5">사람을 지키는 따뜻한 보살핌</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Threat Shield Simulator (최고급 인터랙티브 파트) -->
+    <section id="simulator" class="py-20 relative z-10 bg-slate-950/40 border-y border-slate-900">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-xs uppercase tracking-[0.2em] text-warm-400 font-bold mb-3">Interactive Playground</h2>
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-white">가상 방어막 보안 지수 시뮬레이터</h3>
+                <p class="text-slate-400 text-xs sm:text-sm mt-3 max-w-lg mx-auto">
+                    아래의 3가지 핵심 방어 설정을 조작하여 개인정보를 얼마나 안전하게 보호할 수 있는지 즉석에서 수치로 직접 체감해 보세요!
+                </p>
+            </div>
+
+            <!-- Simulator Panel -->
+            <div class="luxury-panel rounded-3xl p-6 sm:p-8 max-w-2xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    
+                    <!-- Controls -->
+                    <div class="space-y-6">
+                        <h4 class="text-sm font-bold text-slate-300 uppercase tracking-wider border-b border-slate-800 pb-2 flex items-center gap-2">
+                            <i data-lucide="sliders" class="w-4 h-4 text-cyber-400"></i>
+                            보안 모듈 세팅
+                        </h4>
+                        
+                        <!-- Toggle 1: 비밀번호 암호화 상태 -->
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <label class="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                                    <i data-lucide="key-round" class="w-3.5 h-3.5 text-slate-400"></i> 비밀번호 강도
+                                </label>
+                                <span id="pwValText" class="text-[11px] font-mono font-bold text-red-400">단순함 (8자 미만)</span>
+                            </div>
+                            <input id="pwRange" type="range" min="1" max="3" value="1" oninput="updateSimulator()" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyber-500">
+                        </div>
+
+                        <!-- Toggle 2: 방화벽 활성화 -->
+                        <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/50 border border-slate-800">
+                            <span class="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                                <i data-lucide="wall" class="w-3.5 h-3.5 text-slate-400"></i> 실시간 방화벽 활성화
+                            </span>
+                            <button id="firewallToggle" onclick="toggleFirewall()" class="w-12 h-6 rounded-full bg-slate-800 p-0.5 transition-all duration-300 relative focus:outline-none">
+                                <div id="firewallDot" class="w-5 h-5 rounded-full bg-slate-500 transition-all duration-300 transform translate-x-0"></div>
+                            </button>
+                        </div>
+
+                        <!-- Toggle 3: 2단계 OTP 설정 -->
+                        <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/50 border border-slate-800">
+                            <span class="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                                <i data-lucide="smartphone" class="w-3.5 h-3.5 text-slate-400"></i> 2단계 이중 인증 (OTP)
+                            </span>
+                            <button id="otpToggle" onclick="toggleOtp()" class="w-12 h-6 rounded-full bg-slate-800 p-0.5 transition-all duration-300 relative focus:outline-none">
+                                <div id="otpDot" class="w-5 h-5 rounded-full bg-slate-500 transition-all duration-300 transform translate-x-0"></div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Realtime Score Visualization -->
+                    <div class="flex flex-col items-center justify-center p-6 rounded-2xl bg-slate-900/30 border border-slate-800/50 text-center relative overflow-hidden min-h-[220px]">
+                        <p class="text-[11px] font-mono text-slate-500 uppercase tracking-widest mb-2">My Safety Score</p>
+                        
+                        <!-- Big Score Number with Dynamic Colors -->
+                        <div class="relative flex items-center justify-center">
+                            <span id="scoreText" class="text-6xl font-black text-red-500 tracking-tighter transition-all duration-300">10%</span>
+                        </div>
+                        
+                        <!-- Status Label -->
+                        <span id="statusLabel" class="mt-4 px-3 py-1 rounded-full text-[10px] font-bold bg-red-500/10 text-red-400 border border-red-500/20">유출 위험군</span>
+                        
+                        <!-- Warm protective quote based on score -->
+                        <p id="warmAdvice" class="mt-4 text-[11px] text-slate-400 max-w-[200px] leading-relaxed">
+                            비밀번호가 너무 단순하여 해커의 손쉬운 타겟이 될 수 있습니다.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Contact Form (실제 작동하는 것처럼 완벽한 알림 모달을 포함한 영역) -->
+    <section id="contact" class="py-20 relative z-10 bg-slate-950/20 border-t border-slate-900/60">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-xs uppercase tracking-[0.2em] text-cyber-400 font-bold mb-3">Contact Me</h2>
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-white">따뜻한 연결의 시작</h3>
+                <p class="text-xs sm:text-sm text-slate-400 mt-3 max-w-md mx-auto leading-relaxed">
+                    개인정보 진단, 보안 스터디 참여, 가벼운 커피챗 등 어떤 소통이든 기쁜 마음으로 환영합니다.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start max-w-3xl mx-auto">
+                <!-- Info Column -->
+                <div class="md:col-span-5 space-y-4">
+                    <div class="p-5 rounded-2xl bg-slate-900/40 border border-slate-800/80">
+                        <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Direct Contact</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="mail" class="w-4 h-4 text-cyber-400"></i>
+                                <span class="text-xs text-slate-300">information@security.com</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="map-pin" class="w-4 h-4 text-warm-400"></i>
+                                <span class="text-xs text-slate-300">서울, 컴퓨터소프트웨어공학과</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Column -->
+                <div class="md:col-span-7">
+                    <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">이름</label>
+                                <input type="text" required class="w-full px-4 py-2.5 rounded-xl bg-slate-900/50 border border-slate-800 focus:border-cyber-400/50 focus:outline-none text-xs text-white placeholder-slate-600" placeholder="홍길동">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">이메일 주소</label>
+                                <input type="email" required class="w-full px-4 py-2.5 rounded-xl bg-slate-900/50 border border-slate-800 focus:border-cyber-400/50 focus:outline-none text-xs text-white placeholder-slate-600" placeholder="your@email.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">문의 메시지</label>
+                            <textarea required rows="4" class="w-full px-4 py-2.5 rounded-xl bg-slate-900/50 border border-slate-800 focus:border-cyber-400/50 focus:outline-none text-xs text-white placeholder-slate-600 resize-none" placeholder="예비 정보보안 전문가님에게 전하고 싶은 메시지를 입력해 주세요..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-cyber-500 to-teal-500 text-slate-950 text-xs font-bold hover:opacity-95 transition-all">
+                            보안 레터 보내기
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Beautiful Modal for Form Submission Success -->
+    <div id="successModal" class="fixed inset-0 z-50 flex items-center justify-center px-4 hidden">
+        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="luxury-panel rounded-3xl p-6 sm:p-8 max-w-sm w-full relative z-10 text-center animate-bounce-short">
+            <div class="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mx-auto mb-4">
+                <i data-lucide="check" class="text-emerald-400 w-6 h-6"></i>
+            </div>
+            <h4 class="text-base font-bold text-white mb-2">보안 레터 전송 완료!</h4>
+            <p class="text-xs text-slate-400 leading-relaxed mb-6">
+                예비 정보보안 전문가의 보안 우체통으로 소중한 메시지가 안전하게 배달되었습니다. 확인 후 빠르게 연락드리겠습니다.
+            </p>
+            <button onclick="closeModal()" class="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs font-bold text-white transition-all">
+                확인
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-12 mt-12 border-t border-slate-900 bg-slate-950/40">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-slate-900 border border-slate-800 text-pink-400 mb-4 hover:scale-110 transition-all duration-300">
+                <i data-lucide="heart" class="w-5 h-5 fill-pink-500/20 text-pink-500"></i>
+            </div>
+            <h5 class="text-sm font-bold text-white mb-1">염예원 | 예비 정보보안 전문가</h5>
+            <p class="text-[10px] text-slate-500 leading-relaxed max-w-md mx-auto">
+                사람을 먼저 지키는 따뜻한 보안 기술. 대한민국 시큐리티의 미래가 되겠습니다.
+            </p>
+            <p class="text-[9px] text-slate-700 mt-8">
+                © 20262455 염예원. Created with absolute warmth & precision. Powered by Pretendard & Tailwind CSS.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JS Logic -->
+    <script>
+        // Interactive Simulator Logic
+        let firewallActive = false;
+        let otpActive = false;
+
+        function toggleFirewall() {
+            firewallActive = !firewallActive;
+            const btn = document.getElementById('firewallToggle');
+            const dot = document.getElementById('firewallDot');
+            if(firewallActive) {
+                btn.classList.add('bg-cyber-500');
+                btn.classList.remove('bg-slate-800');
+                dot.classList.add('translate-x-6', 'bg-slate-950');
+                dot.classList.remove('translate-x-0', 'bg-slate-500');
+            } else {
+                btn.classList.remove('bg-cyber-500');
+                btn.classList.add('bg-slate-800');
+                dot.classList.remove('translate-x-6', 'bg-slate-950');
+                dot.classList.add('translate-x-0', 'bg-slate-500');
+            }
+            updateSimulator();
+        }
+
+        function toggleOtp() {
+            otpActive = !otpActive;
+            const btn = document.getElementById('otpToggle');
+            const dot = document.getElementById('otpDot');
+            if(otpActive) {
+                btn.classList.add('bg-cyber-500');
+                btn.classList.remove('bg-slate-800');
+                dot.classList.add('translate-x-6', 'bg-slate-950');
+                dot.classList.remove('translate-x-0', 'bg-slate-500');
+            } else {
+                btn.classList.remove('bg-cyber-500');
+                btn.classList.add('bg-slate-800');
+                dot.classList.remove('translate-x-6', 'bg-slate-950');
+                dot.classList.add('translate-x-0', 'bg-slate-500');
+            }
+            updateSimulator();
+        }
+
+        function updateSimulator() {
+            const pwVal = parseInt(document.getElementById('pwRange').value);
+            const scoreText = document.getElementById('scoreText');
+            const statusLabel = document.getElementById('statusLabel');
+            const pwValText = document.getElementById('pwValText');
+            const warmAdvice = document.getElementById('warmAdvice');
+
+            let baseScore = 0;
+
+            // Password score calculation
+            if (pwVal === 1) {
+                baseScore += 10;
+                pwValText.innerText = "단순함 (8자 미만)";
+                pwValText.className = "text-[11px] font-mono font-bold text-red-400";
+            } else if (pwVal === 2) {
+                baseScore += 30;
+                pwValText.innerText = "안전함 (문자 혼합)";
+                pwValText.className = "text-[11px] font-mono font-bold text-yellow-400";
+            } else if (pwVal === 3) {
+                baseScore += 50;
+                pwValText.innerText = "극강 (대소문자/특수)";
+                pwValText.className = "text-[11px] font-mono font-bold text-emerald-400";
+            }
+
+            // Firewall score calculation
+            if(firewallActive) baseScore += 25;
+
+            // OTP score calculation
+            if(otpActive) baseScore += 25;
+
+            // Update UI with transitions
+            scoreText.innerText = baseScore + "%";
+
+            // Status Styling
+            if(baseScore <= 35) {
+                scoreText.className = "text-6xl font-black text-red-500 tracking-tighter transition-all duration-300";
+                statusLabel.innerText = "해킹 위협군";
+                statusLabel.className = "mt-4 px-3 py-1 rounded-full text-[10px] font-bold bg-red-500/10 text-red-400 border border-red-500/20";
+                warmAdvice.innerText = "보안 환경이 취약합니다. 비밀번호를 길게 설정하고 방화벽을 켜보세요!";
+            } else if(baseScore <= 75) {
+                scoreText.className = "text-6xl font-black text-yellow-400 tracking-tighter transition-all duration-300";
+                statusLabel.innerText = "주의 수준";
+                statusLabel.className = "mt-4 px-3 py-1 rounded-full text-[10px] font-bold bg-yellow-500/10 text-yellow-400 border border-yellow-500/20";
+                warmAdvice.innerText = "안전한 방향으로 나아가고 있지만 아직 이중 인증이나 강력한 패스워드가 더 필요합니다.";
+            } else {
+                scoreText.className = "text-6xl font-black text-emerald-400 tracking-tighter transition-all duration-300 premium-glow";
+                statusLabel.innerText = "철통 방어 안전군";
+                statusLabel.className = "mt-4 px-3 py-1 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
+                warmAdvice.innerText = "축하합니다! 완벽한 철벽 수비 상태입니다. 예원님이 꿈꾸는 안전한 웹 세상입니다.";
+            }
+        }
+
+        // Contact Form Submission Handler
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            document.getElementById('successModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('successModal').classList.add('hidden');
+            document.getElementById('contactForm').reset();
+        }
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
